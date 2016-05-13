@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>dynamic-persistence-unit</title>
+</h:head>
+<h:body>
+  <h2>dynamic-persistence-unit</h2>
+
+  Der folgende Wert wird per JPA aus der unten ausgewählten Datenbank gelesen bzw. dorthin gespeichert.
+  <h:form>
+    <h:outputLabel value="Text: " for="text" />
+    <h:inputText value="#{notePresenter.text}" id="text" />
+    <h:commandButton action="#{notePresenter.store()}" value="store" />
+  </h:form>
+
+  <hr />
+
+  Hier kann aus einer der verfügbaren DBs ausgewählt werden. Falls nötig, wird die DB angelegt. Das o.a. Textfeld wird nach der Auswahl refreshed. 
+  <h:form>
+    <h:outputLabel value="DB-URL " for="dbUrl" />
+    <h:selectOneMenu value="#{notePresenter.currentDbUrl}" id="dbUrl">
+      <f:selectItems value="#{notePresenter.dbUrls}" />
+    </h:selectOneMenu>
+
+    <h:commandButton action="#{notePresenter.refresh()}" value="select" />
+  </h:form>
+</h:body>
+</html>

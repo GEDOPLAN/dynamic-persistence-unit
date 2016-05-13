@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+  version="2.1">
+  <persistence-unit name="showcase" transaction-type="JTA">
+  
+    <class>de.gedoplan.showcase.entity.Note</class>
+
+    <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+
+    <properties>
+      <!-- Gemeinsame Parameter für die im Beispiel genutzten Datenbanken -->
+      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+      <property name="javax.persistence.jdbc.user" value="showcase" />
+      <property name="javax.persistence.jdbc.password" value="showcase" />
+      
+      <!-- Diese Property wird eigentlich nicht benötigt, da sie beim Aufbau der EntityManagerFactory übergeben wird -->
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:" />
+    </properties>
+  </persistence-unit>
+</persistence>
